@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-                DOCKER_CRED = credentials('dckr_pat_bvAj8fMPpePmfznMbXdF1PvDkcg')
+                DOCKER_CRED = credentials('*****')
             }
             
     stages {
