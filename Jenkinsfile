@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy to Server') {
             steps {
                 script {
-                    def gitClone = 'git clone https://github.com/yunandarz/todo-app.git'
+                    def gitClone = 'git clone https://github.com/Subeska3/Todo_app_jenkins.git'
                     def dockerPull = 'docker pull yunandar711/todo-app'
                     def dockerComposeDown = 'docker compose down --volumes'
                     def deleteImages = 'docker image prune -a --force'
