@@ -1,22 +1,22 @@
 pipeline {
     agent any
     environment {
-                DOCKER_CRED = credentials('dockerhub-yunandar711')
+                DOCKER_CRED = credentials('dckr_pat_bvAj8fMPpePmfznMbXdF1PvDkcg')
             }
             
     stages {
         stage('Build image') {
             steps {
-                    sh 'docker build -t yunandar711/todo-app:${BUILD_ID} .'
+                    sh 'docker build -t subeska/todo-app:${BUILD_ID} .'
                     sh 'docker images'
                 }
         }
 
         stage('Push Docker hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-yunandar711', usernameVariable: 'DOCKER_CRED_USR', passwordVariable: 'DOCKER_CRED_PSW')]) { 
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-subeska', usernameVariable: 'DOCKER_CRED_USR', passwordVariable: 'DOCKER_CRED_PSW')]) { 
                     sh 'docker login -u ${DOCKER_CRED_USR} -p ${DOCKER_CRED_PSW}' 
-                    sh 'docker push yunandar711/todo-app:${BUILD_ID}' }
+                    sh 'docker push subeska/todo-app:${BUILD_ID}' }
                 }
         }
 
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     def gitClone = 'git clone --mirror git@github.com:Subeska3/Todo_app_jenkins.git'
-                    def dockerPull = 'docker pull yunandar711/todo-app'
+                    def dockerPull = 'docker pull subeska/todo-app'
                     def dockerComposeDown = 'docker compose down --volumes'
                     def deleteImages = 'docker image prune -a --force'
                     def dockerComposeUp = 'docker compose up -d'
