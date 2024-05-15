@@ -1,4 +1,4 @@
-# Example to-do List Application
+# To-do List Application
 
 This repository is a simple to-do list manager that runs on Node.js.
 
